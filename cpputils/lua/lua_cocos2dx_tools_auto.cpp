@@ -17558,6 +17558,308 @@ int lua_register_cocos2dx_tools_ShaderNode(lua_State* tolua_S)
     g_typeCast["ShaderNode"] = "ShaderNode";
     return 1;
 }
+
+int lua_cocos2dx_tools_SpriteWithHue_getHue(lua_State* tolua_S)
+{
+    int argc = 0;
+    SpriteWithHue* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (SpriteWithHue*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_tools_SpriteWithHue_getHue'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        double ret = cobj->getHue();
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getHue",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_getHue'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_tools_SpriteWithHue_setHue(lua_State* tolua_S)
+{
+    int argc = 0;
+    SpriteWithHue* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (SpriteWithHue*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_tools_SpriteWithHue_setHue'", nullptr);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        double arg0;
+
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setHue(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setHue",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_setHue'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_tools_SpriteWithHue_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+
+    do 
+    {
+        if (argc == 2)
+        {
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+            if (!ok) { break; }
+            cocos2d::Rect arg1;
+            ok &= luaval_to_rect(tolua_S, 3, &arg1);
+            if (!ok) { break; }
+            SpriteWithHue* ret = SpriteWithHue::create(arg0, arg1);
+            object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    do 
+    {
+        if (argc == 1)
+        {
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+            if (!ok) { break; }
+            SpriteWithHue* ret = SpriteWithHue::create(arg0);
+            object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_create'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_tools_SpriteWithHue_createWithTexture(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+
+    do 
+    {
+        if (argc == 2)
+        {
+            cocos2d::Texture2D* arg0;
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
+            if (!ok) { break; }
+            cocos2d::Rect arg1;
+            ok &= luaval_to_rect(tolua_S, 3, &arg1);
+            if (!ok) { break; }
+            SpriteWithHue* ret = SpriteWithHue::createWithTexture(arg0, arg1);
+            object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    do 
+    {
+        if (argc == 3)
+        {
+            cocos2d::Texture2D* arg0;
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
+            if (!ok) { break; }
+            cocos2d::Rect arg1;
+            ok &= luaval_to_rect(tolua_S, 3, &arg1);
+            if (!ok) { break; }
+            bool arg2;
+            ok &= luaval_to_boolean(tolua_S, 4,&arg2);
+            if (!ok) { break; }
+            SpriteWithHue* ret = SpriteWithHue::createWithTexture(arg0, arg1, arg2);
+            object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    do 
+    {
+        if (argc == 1)
+        {
+            cocos2d::Texture2D* arg0;
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
+            if (!ok) { break; }
+            SpriteWithHue* ret = SpriteWithHue::createWithTexture(arg0);
+            object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d", "createWithTexture",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_createWithTexture'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrameName(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        SpriteWithHue* ret = SpriteWithHue::createWithSpriteFrameName(arg0);
+        object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithSpriteFrameName",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrameName'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrame(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"SpriteWithHue",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::SpriteFrame* arg0;
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
+        if(!ok)
+            return 0;
+        SpriteWithHue* ret = SpriteWithHue::createWithSpriteFrame(arg0);
+        object_to_luaval<SpriteWithHue>(tolua_S, "SpriteWithHue",(SpriteWithHue*)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithSpriteFrame",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrame'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_tools_SpriteWithHue_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (SpriteWithHue)");
+    return 0;
+}
+
+int lua_register_cocos2dx_tools_SpriteWithHue(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"SpriteWithHue");
+    tolua_cclass(tolua_S,"SpriteWithHue","SpriteWithHue","cc.Sprite",nullptr);
+
+    tolua_beginmodule(tolua_S,"SpriteWithHue");
+        tolua_function(tolua_S,"getHue",lua_cocos2dx_tools_SpriteWithHue_getHue);
+        tolua_function(tolua_S,"setHue",lua_cocos2dx_tools_SpriteWithHue_setHue);
+        tolua_function(tolua_S,"create", lua_cocos2dx_tools_SpriteWithHue_create);
+        tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_tools_SpriteWithHue_createWithTexture);
+        tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrameName);
+        tolua_function(tolua_S,"createWithSpriteFrame", lua_cocos2dx_tools_SpriteWithHue_createWithSpriteFrame);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(SpriteWithHue).name();
+    g_luaType[typeName] = "SpriteWithHue";
+    g_typeCast["SpriteWithHue"] = "SpriteWithHue";
+    return 1;
+}
 TOLUA_API int register_all_cocos2dx_tools(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
@@ -17581,6 +17883,7 @@ TOLUA_API int register_all_cocos2dx_tools(lua_State* tolua_S)
 	lua_register_cocos2dx_tools_Shaker(tolua_S);
 	lua_register_cocos2dx_tools_ShaderNode(tolua_S);
 	lua_register_cocos2dx_tools_YHDataManager(tolua_S);
+	lua_register_cocos2dx_tools_SpriteWithHue(tolua_S);
 	lua_register_cocos2dx_tools_YHLanguageManager(tolua_S);
 	lua_register_cocos2dx_tools_YHDefaultFiniteEffect(tolua_S);
 	lua_register_cocos2dx_tools_YHUIDecimalNumber(tolua_S);

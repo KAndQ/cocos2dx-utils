@@ -66,6 +66,7 @@
 #include "cocos2d-extension/CCEncryptNumber.h"
 #include "cocos2d-extension/CCGeometry-Extension.h"
 #include "cocos2d-extension/ShaderNode.h"
+#include "cocos2d-extension/CCSpriteWithHue.h"
 
 // third party
 
